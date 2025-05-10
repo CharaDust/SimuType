@@ -1,9 +1,9 @@
 # 模拟输入器 - SimuType
 
-该项目复刻自由tushar5526开发的[Autotype](https://github.com/tushar5526/Autotype)。此复刻版本修复了无法运行的bug，并加入了针对第三方加密远控软件以及跨系统虚拟机的支持。
+该项目复刻自由tushar5526开发的[Autotype](https://github.com/tushar5526/Autotype)。此复刻版本修复了无法运行的bug，并加入了针对第三方加密远控软件以及跨系统虚拟机的支持。  
 This project is a fork of [Autotype](https://github.com/tushar5526/Autotype), originally developed by tushar5526. This forked version fixes the non-functioning bug and adds support for third-party encrypted remote control software and cross-system virtual machines.
 
-一个简单且迷你的Python小脚本，针对剪贴板工作异常的远程控制进行预设文本的批量自动输入，适用于虚拟机，远程桌面，第三方远程控制混合使用的场景
+一个简单且迷你的Python小脚本，针对剪贴板工作异常的远程控制进行预设文本的批量自动输入，适用于虚拟机，远程桌面，第三方远程控制混合使用的场景。  
 A quick and small python script that batch automatic input of preset text for remote control with clipboard malfunction, suitable for scenarios involving mixed usage of virtual machines, remote desktops, and third-party remote control tools.
 
 [![Say Thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/codingid6)
@@ -14,7 +14,7 @@ A quick and small python script that batch automatic input of preset text for re
 [![Open Source Love svg1](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) ![contributions welcome](https://img.shields.io/static/v1.svg?label=Contributions&message=Welcome&color=0059b3&style=flat-square) ![GitHub contributors](https://img.shields.io/github/contributors-anon/CharaDust/SimuType)
 <br>
 
-**在Windows，mac OS，Linux均可使用**
+**在Windows，mac OS，Linux均可使用**  
 **Works for windows, mac and linux**
 
 <img src="https://i.imgur.com/pUfYwD0.gif">
@@ -131,7 +131,7 @@ Thanks a lot! Keep rocking 🍻
 
 [![Contributors](https://contrib.rocks/image?repo=CharaDust/SimuType)](https://github.com/CharaDust/SimuType/graphs/contributors)
 
-## 基于支持
+## 给予支持
 ## 🙏 Support++
 
 这个项目需要你手里那颗闪亮的星星，不要忘记给[原作者](https://github.com/tushar5526/Autotype)留一颗星星哦~
