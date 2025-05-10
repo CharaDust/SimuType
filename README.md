@@ -22,6 +22,7 @@ A quick and small python script that batch automatic input of preset text for re
 ## 复刻版本漏洞修复与功能更新
 - 修复了因代码内调用了已经弃用的函数导致无法运行的漏洞
 - 修复了由于第三方远程控制平台（如向日葵和ToDesk）的加密传递算法导致输入异常
+- 添加了随机输入延迟（线性）以防远程控制平台重复发包拦截
 - 现在对于 Windows 平台中文用户打包了一个软件
 
 
