@@ -5,7 +5,7 @@ from tkinter import filedialog
 import tkinter
 
 
-customtkinter.set_appearance_mode("Dark")  # Modes: "System" (standard), "Dark", "Light"
+customtkinter.set_appearance_mode("Light")  # Modes: "System" (standard), "Dark", "Light"
 
 
 class App(customtkinter.CTk):
@@ -16,7 +16,7 @@ class App(customtkinter.CTk):
     def __init__(self):
         super().__init__()
         self.resizable(0, 0)
-        self.title("Autotype")
+        self.title("Autotype(Fixed By Richard)")
         self.geometry(f"{App.WIDTH}x{App.HEIGHT}")
 
         self.protocol("WM_DELETE_WINDOW", self.on_closing)
@@ -53,17 +53,17 @@ class App(customtkinter.CTk):
         )  # empty row with minsize as spacing
 
         self.delay = customtkinter.CTkEntry(
-            master=self.frame_left, width=140, placeholder_text="Enter time delay"
+            master=self.frame_left, width=140, placeholder_text="Enter time delay(s)"
         )
         self.delay.grid(row=1, column=0, pady=10, padx=20)
 
         self.key_delay = customtkinter.CTkEntry(
-            master=self.frame_left, width=140, placeholder_text="Character delay time"
+            master=self.frame_left, width=140, placeholder_text="Char. delay time(s)"
         )
         self.key_delay.grid(row=3, column=0, pady=10, padx=20)
 
         self.line_delay = customtkinter.CTkEntry(
-            master=self.frame_left, width=140, placeholder_text="Next Line delay"
+            master=self.frame_left, width=140, placeholder_text="Next Line delay(s)"
         )
         self.line_delay.grid(row=5, column=0, pady=10, padx=20)
 
@@ -94,7 +94,7 @@ class App(customtkinter.CTk):
         self.label_2 = customtkinter.CTkLabel(
             master=self.frame_right,
             text="Enter Your Code",
-            text_font=("Roboto Medium", -16),
+            font=("Roboto Medium", -16),
         )  # font name and size in px
         self.label_2.grid(row=8, column=0, columnspan=2, pady=20, padx=20, sticky="we")
         self.label_2.place(relx=0.38, rely=0.92)
@@ -109,16 +109,17 @@ class App(customtkinter.CTk):
         delay = self.delay.get()
         key_delay = self.key_delay.get()
         line_delay = self.line_delay.get()
-        code = self.code.textbox.get("1.0", tk.END)
+        # code = self.code.textbox.get("1.0", tk.END)
+        code = self.code.get("1.0", tk.END)
 
         # Check if key_delay and line_delay are provided
         if not key_delay:
-            key_delay = 0  # Set a default value (e.g., 0 seconds) if not provided
+            key_delay = 0.1  # Set a default value (e.g., 0.1 seconds) if not provided
         else:
             key_delay = float(key_delay)
 
         if not line_delay:
-            line_delay = 0  # Set a default value (e.g., 0 seconds) if not provided
+            line_delay = 0.1  # Set a default value (e.g., 0.1 seconds) if not provided
         else:
             line_delay = float(line_delay)
 
