@@ -138,7 +138,7 @@ Thanks a lot! Keep rocking 🍻
 This project needs your shiny star ⭐.
 Don't forget to leave a star ⭐️
 
-制作来自派森，构建来自爱
+制作来自派森，构建来自爱  
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)  [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 
 
