@@ -2,7 +2,9 @@ from pynput.keyboard import Key, Controller
 from time import sleep
 import random
 
-def Type(path: str = None, delay: int = None, code: str = None, key_delay: float = 0.1, line_delay: float = 0.1):
+def Type(path: str = None, delay: int = None, code: str = None, key_delay: float = 0.3, line_delay: float = 0.5):
+    #key_delay ： 0.3 秒，每个字符输入之间的延迟时间；
+    #line_delay ：0.5 秒，表示每行输入之间的延迟时间。
     # If the Argument is negative
     if not delay:
         delay = 3
@@ -47,11 +49,6 @@ def Type(path: str = None, delay: int = None, code: str = None, key_delay: float
                 keyboard.press(key='2')
                 keyboard.release(key='2')
                 keyboard.release(Key.shift)
-            elif char == '#':
-                keyboard.press(Key.shift)
-                keyboard.press(key='3')
-                keyboard.release(key='3')
-                keyboard.release(Key.shift)
             elif char == '$':
                 keyboard.press(Key.shift)
                 keyboard.press(key='4')
@@ -62,15 +59,15 @@ def Type(path: str = None, delay: int = None, code: str = None, key_delay: float
                 keyboard.press(key='5')
                 keyboard.release(key='5')
                 keyboard.release(Key.shift)
-            elif char == '^':
-                keyboard.press(Key.shift)
-                keyboard.press(key='6')
-                keyboard.release(key='6')
-                keyboard.release(Key.shift)
             elif char == '&':
                 keyboard.press(Key.shift)
                 keyboard.press(key='7')
                 keyboard.release(key='7')
+                keyboard.release(Key.shift)
+            elif char == '^':
+                keyboard.press(Key.shift)
+                keyboard.press(key='6')
+                keyboard.release(key='6')
                 keyboard.release(Key.shift)
             elif char == '*':
                 keyboard.press(Key.shift)
@@ -101,16 +98,6 @@ def Type(path: str = None, delay: int = None, code: str = None, key_delay: float
                 keyboard.press(Key.shift)
                 keyboard.press(key='/')
                 keyboard.release(key='/')
-                keyboard.release(Key.shift)
-            elif char == '<':
-                keyboard.press(Key.shift)
-                keyboard.press(key=',')
-                keyboard.release(key=',')
-                keyboard.release(Key.shift)
-            elif char == '>':
-                keyboard.press(Key.shift)
-                keyboard.press(key='.')
-                keyboard.release(key='.')
                 keyboard.release(Key.shift)
             else:
                 keyboard.press(char)  # 直接输入字符

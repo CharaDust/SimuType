@@ -15,7 +15,7 @@ def autotype_cli(
         show_default="Empty File Path",
     ),
     delay: Optional[int] = typer.Option(
-        default=3,
+        default=3, #开始输入前等待的时间：3
         help=typer.style(
             "time ⌛️ delay before typing (in seconds)", fg=typer.colors.MAGENTA
         ),

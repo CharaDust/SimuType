@@ -4,9 +4,7 @@ import customtkinter
 from tkinter import filedialog
 import tkinter
 
-
 customtkinter.set_appearance_mode("Light")  # Modes: "System" (standard), "Dark", "Light"
-
 
 class App(customtkinter.CTk):
 
@@ -18,7 +16,8 @@ class App(customtkinter.CTk):
         self.resizable(0, 0)
         self.title("Autotype(Fixed By Richard)")
         self.geometry(f"{App.WIDTH}x{App.HEIGHT}")
-
+        # 设置窗口始终在最前面
+        self.attributes("-topmost", True)
         self.protocol("WM_DELETE_WINDOW", self.on_closing)
 
         # ============ created two frames ============
@@ -53,34 +52,45 @@ class App(customtkinter.CTk):
         )  # empty row with minsize as spacing
 
         self.delay = customtkinter.CTkEntry(
-            master=self.frame_left, width=140, placeholder_text="Enter time delay(s)"
+            master=self.frame_left, width=140, placeholder_text="等多久开始输入（3秒）"
         )
         self.delay.grid(row=1, column=0, pady=10, padx=20)
 
         self.key_delay = customtkinter.CTkEntry(
-            master=self.frame_left, width=140, placeholder_text="Char. delay time(s)"
+            master=self.frame_left, width=140, placeholder_text="输入间隔（0.3秒）"
         )
         self.key_delay.grid(row=3, column=0, pady=10, padx=20)
 
         self.line_delay = customtkinter.CTkEntry(
-            master=self.frame_left, width=140, placeholder_text="Next Line delay(s)"
+            master=self.frame_left, width=140, placeholder_text="换行间隔（0.5秒）"
         )
         self.line_delay.grid(row=5, column=0, pady=10, padx=20)
 
+        # Clear Input Button
+        self.button_clear = customtkinter.CTkButton(
+            master=self.frame_left,
+            text="清除输入框",
+            fg_color=("gray75", "gray30"),  # <- custom tuple-color
+            command=self.clear_input,
+            hover=True,
+        )
+        self.button_clear.grid(row=6, column=0, pady=10, padx=20)
+
+        # Start Button
         self.button_2 = customtkinter.CTkButton(
             master=self.frame_left,
-            text="Start Typing",
+            text="开始",
             fg_color=("gray75", "gray30"),  # <- custom tuple-color
             command=self.start_typing,
             hover=True,
         )
-        self.button_2.grid(row=6, column=0, pady=10, padx=20)
+        self.button_2.grid(row=7, column=0, pady=10, padx=20)
 
         self.label = customtkinter.CTkLabel(master=self.frame_left, text="")
         self.label.place(relx=0.5, rely=0.3, anchor=tkinter.CENTER)
 
         self.switch_1 = customtkinter.CTkSwitch(
-            master=self.frame_left, text="Dark Mode", command=self.change_mode
+            master=self.frame_left, text="深色模式", command=self.change_mode
         )
         self.switch_1.grid(row=10, column=0, pady=10, padx=20, sticky="w")
 
@@ -91,14 +101,16 @@ class App(customtkinter.CTk):
         )
         self.code.grid(row=8, column=0, columnspan=2, pady=20, padx=20, sticky="we")
 
+        # Bind right-click event to the custom paste function
+        self.code.bind("<Button-3>", self.right_click_paste)
+
         self.label_2 = customtkinter.CTkLabel(
             master=self.frame_right,
-            text="Enter Your Code",
+            text="上方输入英文文本；右键粘贴。\n上方为空点击开始时可以选择txt文件进行输入；左侧留空为默认值。",
             font=("Roboto Medium", -16),
+            anchor="center"
         )  # font name and size in px
-        self.label_2.grid(row=8, column=0, columnspan=2, pady=20, padx=20, sticky="we")
-        self.label_2.place(relx=0.38, rely=0.92)
-
+        self.label_2.place(relx=0.5, rely=1.0, anchor="s")
 
     def open_file(self):
         filePath = filedialog.askopenfile()
@@ -126,16 +138,20 @@ class App(customtkinter.CTk):
         # Continue with the logic based on code and delay as before
         if not code.strip() and delay:
             Type(path=self.open_file(), delay=int(delay), code=None, key_delay=key_delay, line_delay=line_delay)
-            self.label.configure(text="Done Writing Script")
+            self.label.configure(text="完成")
         elif not code.strip() and not delay:
             Type(path=self.open_file(), delay=3, code=None, key_delay=key_delay, line_delay=line_delay)
-            self.label.configure(text="Done Writing Script")
+            self.label.configure(text="完成")
         elif code.strip() and delay:
             Type(path=None, delay=int(delay), code=code, key_delay=key_delay, line_delay=line_delay)
-            self.label.configure(text="Done Writing Script")
+            self.label.configure(text="完成")
         else:
             Type(path=None, delay=3, code=code, key_delay=key_delay, line_delay=line_delay)
-            self.label.configure(text="Done Writing Script")
+            self.label.configure(text="完成")
+
+    def clear_input(self):
+        # Clear the text in the CTkTextbox
+        self.code.delete("1.0", tk.END)
 
     def change_mode(self):
         if self.switch_1.get() == 1:
@@ -149,6 +165,9 @@ class App(customtkinter.CTk):
     def start(self):
         self.mainloop()
 
+    def right_click_paste(self, event):
+        # Simulate a paste operation
+        event.widget.event_generate("<<Paste>>")
 
 if __name__ == "__main__":
     app = App()
